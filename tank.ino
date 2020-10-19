@@ -28,7 +28,7 @@ unsigned int    TickCounter=0;
 
 // Timings and things to change
 #define TIM_SAMPLESTART       5*RUN_FREQ        // 5 seconds
-#define TIM_TIM_SAMPLELENGTH  10*RUN_FREQ       // 10 seconds
+#define TIM_SAMPLELENGTH      10*RUN_FREQ       // 10 seconds
 #define TIM_BURST1            5*RUN_FREQ+10     // 5 seconds plus a tiny bit
 #define TIM_BURSTLEN1         26                // Length of burst1. Make this an EVEN number! (if this is 10 then there are 5 bursts)
 #define TIM_BURST2            5*RUN_FREQ+100    
