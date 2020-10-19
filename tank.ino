@@ -37,7 +37,7 @@ unsigned int    TickCounter=0;
 #define TIM_BURSTLEN3         350               // Length of burst3. Make this an EVEN number! (if this is 10 then there are 5 bursts)
 #define TIM_REPEAT            60*RUN_FREQ       // 60*RUN_FREQ = Rewind at 60 seconds (max. value is 655535 = 327 seconds = a little over 5 minutes)
 
-#define SPD_RADAR             50                // min=0, max=255. Find the value that works for your setup
+#define SPD_RADAR             25                // min=0, max=255. Find the value that works for your setup
 
 // This runs only once when powering on
 void setup()
@@ -72,19 +72,19 @@ void loop()
 
         if (TickCounter >= TIM_BURST1 && TickCounter <= TIM_BURST1 + TIM_BURSTLEN1)
         {
-                if (TickCounter & 0x0001) digitalWrite(RATTLELED, HIGH);
+                if (TickCounter & 0x0002) digitalWrite(RATTLELED, HIGH);
                 else digitalWrite(RATTLELED, LOW);
         }
 
         if (TickCounter >= TIM_BURST2 && TickCounter <= TIM_BURST2 + TIM_BURSTLEN2)
         {
-                if (TickCounter & 0x0001) digitalWrite(RATTLELED, HIGH);
+                if (TickCounter & 0x0002) digitalWrite(RATTLELED, HIGH);
                 else digitalWrite(RATTLELED, LOW);
         }
 
         if (TickCounter >= TIM_BURST3 && TickCounter <= TIM_BURST3 + TIM_BURSTLEN3)
         {
-                if (TickCounter & 0x0001) digitalWrite(RATTLELED, HIGH);
+                if (TickCounter & 0x0002) digitalWrite(RATTLELED, HIGH);
                 else digitalWrite(RATTLELED, LOW);
         }
         
