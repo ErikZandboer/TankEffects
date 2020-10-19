@@ -45,7 +45,7 @@ void setup()
         digitalWrite(RATTLELED, LOW);     // Blinking led group starts OFF
         digitalWrite(RADARMOTOR,LOW);     // Blinking led group 2 starts OFF
 
-        pinMode (RATTELED,    OUTPUT);
+        pinMode (RATTLELED,   OUTPUT);
         pinMode (RADARMOTOR,  OUTPUT);
 
         analogWrite (RADARMOTOR, SPD_RADAR);   // Run the motor at 50 to slow down the radar.
