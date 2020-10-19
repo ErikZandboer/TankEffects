@@ -70,19 +70,19 @@ void loop()
         if (TickCounter == TIM_SAMPLESTART)  mp3.playWithVolume(1,26);  // Play the first mp3 on the card at volume 26 (max is 30)
         if (TickCounter == TIM_SAMPLESTART+TIM_SAMPLELENGTH) mp3.stopPlay(); // Stop playing after the show is over
 
-        if (TickCounter >= TIM_BURST1 && TickCounter <= TIM_BURST1 + TIM_BURSTLEN)
+        if (TickCounter >= TIM_BURST1 && TickCounter <= TIM_BURST1 + TIM_BURSTLEN1)
         {
                 if (TickCounter & 0x0001) digitalWrite(RATTLELED, HIGH);
                 else digitalWrite(RATTLELED, LOW);
         }
 
-        if (TickCounter >= TIM_BURST2 && TickCounter <= TIM_BURST2 + TIM_BURSTLEN)
+        if (TickCounter >= TIM_BURST2 && TickCounter <= TIM_BURST2 + TIM_BURSTLEN2)
         {
                 if (TickCounter & 0x0001) digitalWrite(RATTLELED, HIGH);
                 else digitalWrite(RATTLELED, LOW);
         }
 
-        if (TickCounter >= TIM_BURST3 && TickCounter <= TIM_BURST3 + TIM_BURSTLEN)
+        if (TickCounter >= TIM_BURST3 && TickCounter <= TIM_BURST3 + TIM_BURSTLEN3)
         {
                 if (TickCounter & 0x0001) digitalWrite(RATTLELED, HIGH);
                 else digitalWrite(RATTLELED, LOW);
