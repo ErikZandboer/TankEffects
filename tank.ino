@@ -5,6 +5,7 @@
 /*                                                                                            */
 /* Versioning:                                                                                */
 /* 1.00            Creation. First go at timing the leds and motor.                           */
+/* 1.01            Made sure the leds cannot get stuck to "on" and simplified timing defines  */
 /*--------------------------------------------------------------------------------------------*/
 
 // Includes
@@ -27,15 +28,15 @@ unsigned int    TickCounter=0;
 #define RUN_FREQ 100
 
 // Timings and things to change
-#define TIM_SAMPLESTART       5*RUN_FREQ        // 5 seconds
-#define TIM_SAMPLELENGTH      10*RUN_FREQ       // 10 seconds
-#define TIM_BURST1            5*RUN_FREQ+10     // 5 seconds plus a tiny bit
+#define TIM_SAMPLESTART       500               // 5 seconds
+#define TIM_SAMPLELENGTH      1000              // 10 seconds
+#define TIM_BURST1            510               // 5 seconds plus a tiny bit
 #define TIM_BURSTLEN1         26                // Length of burst1. Make this an EVEN number! (if this is 10 then there are 5 bursts)
-#define TIM_BURST2            5*RUN_FREQ+100    
+#define TIM_BURST2            600    
 #define TIM_BURSTLEN2         110               // Length of burst2. Make this an EVEN number! (if this is 10 then there are 5 bursts)
-#define TIM_BURST3            5*RUN_FREQ+370         
+#define TIM_BURST3            870         
 #define TIM_BURSTLEN3         350               // Length of burst3. Make this an EVEN number! (if this is 10 then there are 5 bursts)
-#define TIM_REPEAT            60*RUN_FREQ       // 60*RUN_FREQ = Rewind at 60 seconds (max. value is 655535 = 327 seconds = a little over 5 minutes)
+#define TIM_REPEAT            6000              // Rewind at 60 seconds (max. value is 655535 = 327 seconds = a little over 5 minutes)
 
 #define SPD_RADAR             25                // min=0, max=255. Find the value that works for your setup
 
@@ -75,17 +76,19 @@ void loop()
                 if (TickCounter & 0x0002) digitalWrite(RATTLELED, HIGH);
                 else digitalWrite(RATTLELED, LOW);
         }
-
-        if (TickCounter >= TIM_BURST2 && TickCounter <= TIM_BURST2 + TIM_BURSTLEN2)
+        else if (TickCounter >= TIM_BURST2 && TickCounter <= TIM_BURST2 + TIM_BURSTLEN2)
         {
                 if (TickCounter & 0x0002) digitalWrite(RATTLELED, HIGH);
                 else digitalWrite(RATTLELED, LOW);
         }
-
-        if (TickCounter >= TIM_BURST3 && TickCounter <= TIM_BURST3 + TIM_BURSTLEN3)
+        else if (TickCounter >= TIM_BURST3 && TickCounter <= TIM_BURST3 + TIM_BURSTLEN3)
         {
                 if (TickCounter & 0x0002) digitalWrite(RATTLELED, HIGH);
                 else digitalWrite(RATTLELED, LOW);
+        }
+        else
+        {
+                digitalWrite(RATTLELED, LOW);           // If no burst is going, 
         }
         
         delay(1); // Added this dummy delay() to make sure the code takes more than 1 ms to execute.
