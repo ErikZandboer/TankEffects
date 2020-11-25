@@ -44,7 +44,7 @@ unsigned int    TickCounter=0;
 void setup()
 {
         digitalWrite(RATTLELED, LOW);     // Blinking led group starts OFF
-        digitalWrite(RADARMOTOR,LOW);     // Blinking led group 2 starts OFF
+        digitalWrite(RADARMOTOR,LOW);     // Radar motor stopped.
 
         pinMode (RATTLELED,   OUTPUT);
         pinMode (RADARMOTOR,  OUTPUT);
